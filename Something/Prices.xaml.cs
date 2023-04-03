@@ -33,6 +33,11 @@ namespace Something
             if (Pric.SelectedItem != null)
             {
                 var sel = Pric.SelectedItem as DataRowView;
+                Add.Text = sel.Row[1].ToString();
+            }
+            else
+            {
+                Add.Text = null;
             }
         }
 
@@ -50,6 +55,13 @@ namespace Something
                 priceTableAdapter.DeleteQuery((int)sel);
                 Pric.ItemsSource = priceTableAdapter.GetData();
             }
+        }
+
+        private void UpdatePric_Click(object sender, RoutedEventArgs e)
+        {
+            var sel = (Pric.SelectedItem as DataRowView).Row[0];
+            priceTableAdapter.UpdateQuery(Convert.ToInt32(Add.Text), (int)sel);
+            Pric.ItemsSource = priceTableAdapter.GetData();
         }
     }
 }

@@ -13,11 +13,13 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="Produc" SelectionChanged="Produc_SelectionChanged"/>
         <TextBox x:Name="Add" Grid.Row="1"/>
         <ComboBox x:Name="IDPr" Grid.Row="2"/>
         <Button x:Name="AddProd" Grid.Row="3" Content="Добавить продукт" Click="AddProd_Click"/>
         <Button x:Name="DeleteProd" Grid.Row="4" Content="Удалить продукт" Click="DeleteProd_Click"/>
+        <Button x:Name="UpdateProd" Grid.Row="5" Content="Изменить продукт" Click="UpdateProd_Click"/>
     </Grid>
 </Window>

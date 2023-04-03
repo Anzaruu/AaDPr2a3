@@ -29,6 +29,7 @@ namespace Something
             Produc.ItemsSource = productTableAdapter.GetData();
             IDPr.ItemsSource = priceTableAdapter.GetData();
             IDPr.DisplayMemberPath = "Sum";
+            IDPr.SelectedValuePath = "Id";
         }
 
         private void Produc_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,12 +37,19 @@ namespace Something
             if (Produc.SelectedItem != null)
             {
                 var sel = Produc.SelectedItem as DataRowView;
+                Add.Text = sel.Row[1].ToString();
+                IDPr.SelectedValue = (int)sel.Row[2];
+            }
+            else
+            {
+                Add.Text = null;
+                IDPr.Text = null;
             }
         }
 
         private void AddProd_Click(object sender, RoutedEventArgs e)
         {
-            productTableAdapter.InsertQuery2(Add.Text, (int)(IDPr.SelectedValue as DataRowView).Row[0]);
+            productTableAdapter.InsertQuery2(Add.Text, (int)(IDPr.SelectedValue));
             Produc.ItemsSource = productTableAdapter.GetData();
         }
 
@@ -53,6 +61,13 @@ namespace Something
                 productTableAdapter.DeleteQuery((int)sel);
                 Produc.ItemsSource = productTableAdapter.GetData();
             }
+        }
+
+        private void UpdateProd_Click(object sender, RoutedEventArgs e)
+        {
+            var sel = (Produc.SelectedItem as DataRowView).Row[0];
+            productTableAdapter.UpdateQuery(Add.Text, (int)(IDPr.SelectedValue), (int)sel);
+            Produc.ItemsSource = productTableAdapter.GetData();
         }
     }
 }

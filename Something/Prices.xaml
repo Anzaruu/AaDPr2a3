@@ -12,10 +12,12 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="Pric" SelectionChanged="Pric_SelectionChanged"/>
         <TextBox x:Name="Add" Grid.Row="1"/>
         <Button x:Name="AddPric" Grid.Row="2" Content="Добавить цену" Click="AddPric_Click"/>
         <Button x:Name="DeletePric" Grid.Row="3" Content="Удалить цену" Click="DeletePric_Click"/>
+        <Button x:Name="UpdatePric" Grid.Row="4" Content="Изменить цену" Click="UpdatePric_Click"/>
     </Grid>
 </Window>
